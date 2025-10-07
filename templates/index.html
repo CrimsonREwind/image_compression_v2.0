@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor v2.0</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-compress-alt"></i>
+                <h1>Image Compressor v2.0</h1>
+            </div>
+            <p class="subtitle">Compress your images with ease and speed</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Drop your images here</h3>
+                    <p>or <span class="browse-text">browse files</span></p>
+                    <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.gif,.bmp">
+                    <div class="file-types">
+                        <span>Supported formats: JPG, PNG, GIF, BMP</span>
+                    </div>
+                </div>
+
+                <div class="controls-section" id="controlsSection" style="display: none;">
+                    <div class="quality-control">
+                        <label for="qualitySlider">
+                            <i class="fas fa-sliders-h"></i>
+                            Compression Quality: <span id="qualityValue">80</span>%
+                        </label>
+                        <input type="range" id="qualitySlider" min="1" max="95" value="80">
+                        <div class="quality-labels">
+                            <span>Lower Size</span>
+                            <span>Higher Quality</span>
+                        </div>
+                    </div>
+                    
+                    <button class="compress-btn" id="compressBtn">
+                        <i class="fas fa-compress"></i>
+                        Compress Images
+                    </button>
+                </div>
+            </div>
+
+            <div class="files-preview" id="filesPreview" style="display: none;">
+                <h3><i class="fas fa-images"></i> Selected Images</h3>
+                <div class="files-grid" id="filesGrid"></div>
+                <div class="files-summary">
+                    <div class="summary-item">
+                        <span class="label">Total Files:</span>
+                        <span class="value" id="totalFiles">0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Total Size:</span>
+                        <span class="value" id="totalSize">0 MB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <i class="fas fa-cog fa-spin"></i>
+                        <span>Compressing images...</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Compression Complete!</h3>
+                    <p>Your images have been successfully compressed.</p>
+                    <div class="result-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Files Processed:</span>
+                            <span class="stat-value" id="processedFiles">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Compression Quality:</span>
+                            <span class="stat-value" id="finalQuality">80%</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="download-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i>
+                            Download ZIP
+                        </button>
+                        <button class="restart-btn" id="restartBtn">
+                            <i class="fas fa-redo"></i>
+                            Compress More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Oops! Something went wrong</h3>
+                    <p id="errorMessage">An error occurred during compression.</p>
+                    <button class="retry-btn" id="retryBtn">
+                        <i class="fas fa-redo"></i>
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Image Compressor v2.0. Built with Flask & modern web technologies.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
