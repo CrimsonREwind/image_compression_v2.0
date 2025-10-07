@@ -140,6 +140,10 @@ def download_file(filename):
 @app.route('/progress/<session_id>')
 def get_progress(session_id):
     return jsonify({'progress': 0})
+    
+@app.route("/ping")
+def ping():
+    return "pong", 200
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
